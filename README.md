@@ -1,126 +1,63 @@
 # Accessible Astro Starter
 
-This starter project is build upon the (awesome) Astro static site builder. For their official documentation check their [GitHub repository](https://github.com/snowpackjs/astro). This starter offers a couple of Accessibility components and some utility classes to get you building your project faster. To get started simply clone this project to your local folders and then follow Astro's commands such as `npm install`, `npm start` and `npm run build`. 🙂 Also check out the [Accessible Astro Components](https://github.com/markteekman/accessible-astro-components) which can be used with (or without) this starter!
+![social-preview-image](https://user-images.githubusercontent.com/3909046/219942674-9894853e-def8-4180-84b8-6b577dacfcaa.png)
 
-[Live demo](https://accessible-astro.markteekman.nl/)
+Accessible Astro Starter is a ready to use, SEO and a11y friendly blogging theme. It contains plenty of accessible components to build several page types, Tailwind CSS to help you build faster and example pages such as a dynamic Blog, 404, Markdown and MDX. This theme is designed to help you build your project faster and provide a solid base for accessibility!
 
-## Accessibility features
+🚀 [Live Preview](https://accessible-astro.netlify.app/)
 
-In this starter you'll find a couple of things:
+## ♿ (Accessibility) Features
 
-- Accessible landmarks in the `DefaultLayout.astro` file such as `header`, `main` and `footer`
-- Accessible landmark examples in the `index.astro` file such as `section` and `nav`
-- `SkipLinks.astro` component to skip to either the main menu or the main content
-- `Navigation.astro` component with keyboard accessible navigation (arrow keys, escape key)
-- `ResponsiveToggle.astro` component with an accessible responsive toggle button for the navigation
-- `DarkMode.astro` component toggle with accessible button and a user system preferred color scheme
+- Tailwind CSS support
+- Prettier integration with `prettier-plugin-astro` and `prettier-plugin-tailwind`
+- ESLint integration with strict accessibility settings for `eslint-plugin-jsx-a11y`
+- Markdown and MDX support with examples included in the theme
+- Uses the awesome `astro-icon` package for the icons
+- Excellent Lighthouse/PageSpeed scores
+- Accessible landmarks such as `header`, `main`, `footer`, `section` and `nav`
 - Outline focus indicator which works on dark and light backgrounds
-- `.sr-only` token class for screen reader only text content
+- Several `aria` attributes which provide a better experience for screen reader users
+- `[...page].astro` and `[post].astro` demonstrate the use of dynamic routes and provide a basic blog with breadcrumbs and pagination
+- `404.astro` provides a custom 404 error page which you can adjust to your needs
+- `Header.astro` component included in the `DefaultLayout.astro` layout
+- `Footer.astro` component included in the `DefaultLayout.astro` layout
+- `SkipLinks.astro` component to skip to either the main menu or the main content
+- `Navigation.astro` component with keyboard accessible (dropdown) navigation (arrow keys, escape key)
+- `ResponsiveToggle.astro` component with an accessible responsive toggle button for the mobile navigation
+- `DarkMode.astro` component toggle with accessible button and a user system preferred color scheme setting
+- `SiteMeta.astro` SEO component for setting custom meta data on different pages
+- `.sr-only` utility class for screen reader only text content (hides text visually)
+- `prefers-reduced-motion` disables animations for users that have this preference turned on
+- Ships with many components such as Accordions, Breadcrumbs, Modals, Pagination [and many more](https://accessible-astro.dev/accessible-components)
+- A collection of utility classes such as breakpoints, button classes, font settings, resets and outlines in `src/assets/scss/base`
 
-## Other features
+## 🚀 Getting started
 
-This starter contains some extra Design System like utility classes to aid in the global layout of your project. All of this can be found in the `public/scss/base` directory, and compiles in the `globals.scss` file. Using these primitives is totally optional, use or remove at your own preference :) What it contains:
+Clone this theme locally and run any of the following commands in your terminal:
 
-- Reset file to reset browser defaults and ensure everything looks good
-- Some basic font settings, such as responsive heading sizes
-- Color shades for your color pallet, rendered to the `:root` of your website as custom properties
-- Simple auto-grid setting using `display: grid` and a `data-attribute`
-- A bit more advanced grid settings using `display` grid to easily setup a 12-column layout
-- Utilities set in `_utility.scss` for things such as spacing, sizes, colors, and box-shadows
+| Command           | Action                                       |
+| :---------------- | :------------------------------------------- |
+| `npm install`     | Installs dependencies                        |
+| `npm run dev`     | Starts local dev server at `localhost:3000`  |
+| `npm run build`   | Build your production site to `./dist/`      |
+| `npm run preview` | Preview your build locally, before deploying |
 
-### Using Auto Grid
+## 📦 Other Accessible Astro projects
 
-Simply apply the `data-auto-grid` attribute on your parent `div` with a number from 2-6 (if you need more columns just tweak the for loop in `_auto-grid.scss`). The grid automatically creates new rows (this is how `display: grid` works by default).
+- [Accessible Astro Dashboard](https://github.com/markteekman/accessible-astro-dashboard/)
+- [Accessible Astro Components](https://github.com/markteekman/accessible-astro-components/)
 
-```html
-<div class="container" data-auto-grid="3">
-  <p>First column</p>
-  <p>Second column</p>
-  <p>Third column</p>
-</div>
-```
+## ❤️ Helping out
 
-You can also center the contents of the cell using the `data-grid-center` attribute. Use it together with `data-auto-grid`.
-
-```html
-<div class="container" data-auto-grid="3" data-grid-center>
-  <!-- ... -->
-</div>
-```
-
-_Examples are included in the index.astro file_
-
-### Using Grid
-
-Grid enables you to build a little more complex layouts if need be. Using `display: flex;` you can define the amount of columns `.cells` should take up in your `.grid`, and for which breakpoint they should do so. You can also use offset on a grid to create an extra column of offset. For all examples check [my documentation website](https://markteekman.nl/project/flexbox-grid).
-
-```html
-<div class="container">
-  <div class="grid gutters">
-    <div class="cell small-12 medium-3">
-      <h3>Sidebar</h3>
-      <!-- ... -->
-    </div>
-    <div class="cell small-12 medium-8 offset-medium-1">
-      <h3>Main</h3>
-      <!-- ... -->
-    </div>
-  </div>
-</div>
-```
-
-_Examples are included in the index.astro file_
-
-### Using Margin and Padding
-
-To prevent spacing each element in your website individually and to prevent inconsistencies, you can use the `.margin-#` and `.padding-#` utility classes. A good practice is to set in on your `<section>` elements, for starters. To space out content you can use a special `.space-content` class on your parent div (for example in a `.cell` of your `.grid`). By default, margin/padding top and bottom are set with these utilities. You can also set it explicitly using either `.top` of `.bottom` class tokens. Find or tweak all spacing options in `_space.scss`.
-
-```html
-<section class="padding-32">
-  <div class="container">
-    <h2 class="margin-16 bottom">Grid example</h2>
-  </div>
-</section>
-```
-
-_Examples are included in the index.astro file_
-
-### Using Sizes
-
-If you need an exception on your font-size for a specific reason you can use size utility classes to accomplish that. Using it is easy. Find or tweak all spacing options in `_size.scss`.
-
-```html
-<div class="container">
-  <p class="size-20">I'm a bigger font size!</p>
-</div>
-```
-
-_Examples are included in the index.astro file_
-
-## Using Colors
-
-You can setup your own color schemes in the `_colors.scss` file. You'll find a SCSS map, which gets printed inside `_root.scss` as custom properties.
-
-```scss
-$colors: (
-  primary-clr: (
-    100: hsl(262, 90%, 95%),
-    200: hsl(262, 100%, 88%),
-    300: hsl(262, 100%, 78%),
-    400: hsl(268, 82%, 60%),
-    500: hsl(273, 79%, 48%),
-  ),
-  // ...
-);
-```
-
-## Helping out
-
-If you find that something isn't working right then I'm also happy to hear it to improve this starter! Let me know by either:
+If you find that something isn't working right then I'm always happy to hear it to improve this starter! You can contribute in many ways and forms. Let me know by either:
 
 1. [Filing an issue](https://github.com/markteekman/accessible-astro-starter/issues)
-2. Or sending a [pull request](https://github.com/markteekman/accessible-astro-starter/pulls)
+2. [Submitting a pull request](https://github.com/markteekman/accessible-astro-starter/pulls)
+3. [Starting a discussion](https://github.com/markteekman/accessible-astro-starter/discussions)
+4. [Buying me a coffee!](https://www.buymeacoffee.com/markteekman)
 
-## Thank you!
+## ☕ Thank you!
 
-A big thank you to the creators of this awesome Astro static site builder and to all using this starter to make the web a bit more accessible for all people around the world :)
+A big thank you to the creators of the awesome Astro static site generator and to all using this starter to make the web a bit more accessible for all people around the world :)
+
+[![buymeacoffee-button](https://user-images.githubusercontent.com/3909046/150683481-be070424-7bb0-4dd7-a3cb-43b5605163f5.png)](https://www.buymeacoffee.com/markteekman)
