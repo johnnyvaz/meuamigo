@@ -5,7 +5,7 @@ import Header from '../components/Header.astro'
 import Footer from '../components/Footer.astro'
 
 const {
-  title = 'Meu Amigo',
+  title = 'Meu Amigo Blog',
   description = 'Site da Garota Sophia de 09 anos, com suas experiências com Deus, brincadeiras e suas obras',
   url,
   image = '/social-preview-image.png',
@@ -25,9 +25,7 @@ const {
     <SiteMeta
       title={title}
       description={description.substring(0, 100)}
-      url={Astro.site
-        ? `${Astro.site}/${title.toLowerCase().replaceAll(' ', '-')}`
-        : `https://accessible-astro.dev/${title.toLowerCase().replaceAll(' ', '-')}`}
+      url="https://meuamigo.blog.br"
       image={image}
       author={author}
     />
